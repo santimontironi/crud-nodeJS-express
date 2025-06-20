@@ -13,6 +13,17 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // servir archivos estáticos
 app.use(express.static('public'));
 
+app.get('/',async (req,res) => {
+    try{
+        const results = await pool.query("SELECT * FROM libros")
+        res.render('index',{libros:results.rows})
+    }
+    catch(error){
+        console.error('Error al obtener libros:', err)
+        res.status(500).send('Error al obtener libros')
+    }
+})
+
 app.listen(() => {
-    console.log(`Servidor corriendo en el puerto: ${PORT}`);
+    console.log(`Servidor corriendo en el puerto: ${port}`);
 })
