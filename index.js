@@ -1,7 +1,9 @@
 const bodyParser = require('body-parser')
 const pool = require('./db')
-const app = require('express')
+const express = require('express')
 const port = 3000
+
+const app = express()
 
 // se configura el motor para las vistas
 app.set('view engine', 'ejs');
