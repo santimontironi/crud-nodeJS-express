@@ -1,5 +1,5 @@
 const bodyParser = require('body-parser')
-const pool = require('./db')
+const bd = require('./db')
 const express = require('express')
 const port = 3000
 
@@ -15,10 +15,14 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // servir archivos estáticos
 app.use(express.static('public'));
 
-app.get('/',async (req,res) => {
+app.get('/',(req,res) => {
+    res.render('index')
+})
+
+app.get('/libros',async (req,res) => {
     try{
-        const results = await pool.query("SELECT * FROM libros")
-        res.render('index',{libros:results.rows})
+        const results = await bd.query("SELECT * FROM libros")
+        res.render('libros',{libros:results.rows})
     }
     catch(error){
         console.error('Error al obtener libros:', error)

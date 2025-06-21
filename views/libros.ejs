@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de libros</title>
+</head>
+<body>
+
+    <section>
+        <h1>Listado de libros</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Año</th>
+                    <th>Género</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (libros.length === 0) { %>
+                    <tr>
+                        <td>No hay libros registrados.</td>
+                    </tr>
+                <% } else { %>
+                    <% libros.forEach(libro => { %>
+                        <tr>
+                            <td><%= libro.id %></td>
+                            <td><%= libro.titulo %></td>
+                            <td><%= libro.autor %></td>
+                            <td><%= libro.anio %></td>
+                            <td><%= libro.genero %></td>
+                        </tr>
+                    <% }) %>
+                <%}%>
+            </tbody>
+        </table>
+    </section>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+</body>
+</html>
