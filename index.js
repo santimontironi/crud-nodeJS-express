@@ -28,9 +28,9 @@ app.get('/login',(req,res) => {
 })
 
 app.post('/login', async (req,res) => {
-    const {usuario,password} = req.body
+    const {user,password} = req.body
     try{
-        const results = await bd.query("SELECT * FROM usuarios WHERE username = $1 AND password = $2",[usuario,password])
+        const results = await bd.query("SELECT * FROM usuarios WHERE username = $1 AND password = $2",[user,password])
         if(results.rows.length > 0){
             res.redirect('/libros')
         }
@@ -41,6 +41,12 @@ app.post('/login', async (req,res) => {
     catch(error){
         res.status(500).send("Error en el servidor.")
     }
+})
+
+app.get('/register',(req,res) => {
+    res.render('register',{
+        title:'Registro'
+    })
 })
 
 app.get('/libros',async (req,res) => {
