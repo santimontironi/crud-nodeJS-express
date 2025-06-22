@@ -21,6 +21,28 @@ app.get('/',(req,res) => {
     })
 })
 
+app.get('/login',(req,res) => {
+    res.render('login',{
+        title: 'Login'
+    })
+})
+
+app.post('/login', async (req,res) => {
+    const {usuario,password} = req.body
+    try{
+        const results = await bd.query("SELECT * FROM usuarios WHERE username = $1 AND password = $2",[usuario,password])
+        if(results.rows.length > 0){
+            res.redirect('/libros')
+        }
+        else{
+            res.status(404).send('Usuario o contraseña incorrectas.')
+        }
+    }
+    catch(error){
+        res.status(500).send("Error en el servidor.")
+    }
+})
+
 app.get('/libros',async (req,res) => {
     try{
         const results = await bd.query("SELECT * FROM libros")

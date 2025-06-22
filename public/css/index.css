@@ -14,7 +14,7 @@ body{
 }
 
 .contenedorIndex img{
-    width: 270px;
+    width: 250px;
     margin: auto;
     filter: drop-shadow(
         10px 5px 10px rgba(0,0,0,0.70)
@@ -31,10 +31,10 @@ body{
     color: #FA8126;
     font-size: 60px;
     text-shadow:
-    -1px -1px 0 #1a0b41,
-     1px -1px 0 #1a0b41,
-    -1px  1px 0 #1a0b41,
-     1px  1px 0 #1a0b41;
+    -1px -1px 0 #130830,
+     1px -1px 0 #130830,
+    -1px  1px 0 #130830,
+     1px  1px 0 #130830;
 }
 
 .contenidoIndex p{
