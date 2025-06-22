@@ -16,20 +16,53 @@ body{
 .contenedorIndex img{
     width: 270px;
     margin: auto;
+    filter: drop-shadow(
+        10px 5px 10px rgba(0,0,0,0.70)
+    );
 }
 
 .contenidoIndex{
-    width: 700px;
+    width: 800px;
     position: absolute;
-    top: 0;
+    top: -20px;
 }
 
 .tituloPrincipal{
     color: #FA8126;
-    font-size: 50px;
+    font-size: 60px;
     text-shadow:
     -1px -1px 0 #1a0b41,
      1px -1px 0 #1a0b41,
     -1px  1px 0 #1a0b41,
      1px  1px 0 #1a0b41;
+}
+
+.contenidoIndex p{
+    color: #1a0b41;
+}
+
+.botones a:first-child{
+    background-color: #1a0b41;
+    color: #FA8126;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+.botones a:first-child:hover{
+    background-color: #FA8126;
+    color: #1a0b41;
+}
+
+.botones a:last-child{
+    background-color: #FA8126;
+    color: #1a0b41;
+    padding: 10px;
+    text-decoration: none;
+    border-radius: 20px;
+}
+
+.botones a:last-child:hover{
+    background-color: #1a0b41;
+    color: #FA8126;
 }
