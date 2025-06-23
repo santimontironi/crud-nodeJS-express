@@ -2,19 +2,32 @@
 <html lang="es">
     <%- include ('partials/head') %>
 <body>
-    <form action="/login" method="POST">
-        <input type="text" name="user" id="user">
-        <input type="password" name="password" id="password">
-        <input type="submit" value="Ingresar">
-    </form>
-
-    <% if (wrongLogin) { %>
-        <p><%= wrongLogin %></p>
-    <% } %>
-
-    <% if (errorLogin) { %>
-        <p><%= errorLogin %></p>
-    <% } %>
-
+    <div class="contenedorLogin min-vh-100 w-100">
+        <header>
+            <a href="/">Volvier al inicio</a>
+        </header>
+        <h1 class="text-center text-light">Iniciar sesión</h1>
+        <form action="/login" method="POST">
+            <div class="mb-3 d-flex flex-column">
+                <label class="form-label text-light" for="user">Nombre de usuario</label>
+                <input class="form-control" type="text" name="user" id="user">
+            </div>
+            <div class="mb-3 d-flex flex-column">
+                <label class="form-label text-light" for="password">Contraseña</label>
+                <input class="form-control" type="password" name="password" id="password">
+            </div>
+            <div class="mb-3">
+                <input type="submit" value="Ingresar">
+            </div>
+        </form>
+    
+        <% if (wrongLogin) { %>
+            <p><%= wrongLogin %></p>
+        <% } %>
+    
+        <% if (errorLogin) { %>
+            <p><%= errorLogin %></p>
+        <% } %>
+    </div>
 </body>
 </html>
