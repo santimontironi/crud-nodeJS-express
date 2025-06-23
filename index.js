@@ -23,7 +23,9 @@ app.get('/',(req,res) => {
 
 app.get('/login',(req,res) => {
     res.render('login',{
-        title: 'Login'
+        title: 'Login',
+        wrongLogin: null,
+        errorLogin: null
     })
 })
 
@@ -35,11 +37,18 @@ app.post('/login', async (req,res) => {
             res.redirect('/libros')
         }
         else{
-            res.status(404).send('Usuario o contraseña incorrectas.')
+            res.render('/login',{
+                wrongLogin:'Usuario o contraseña incorrectas.',
+                errorLogin: null
+            })
         }
     }
     catch(error){
-        res.status(500).send(`Error en el servidor: ${error}`)
+        res.render('/login',{
+            title: 'Login',
+            wrongLogin: null,
+            errorLogin: `Error en el servidor: ${error}`
+        })
     }
 })
 
