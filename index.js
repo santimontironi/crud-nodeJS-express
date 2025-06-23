@@ -49,6 +49,24 @@ app.get('/register',(req,res) => {
     })
 })
 
+app.post('/register',async (req,res) => {
+    const {nombre,apellido,user,email,password} = req.body
+    try{
+        const existingUser = await bd.query("SELECT * FROM usuarios WHERE username = $1 AND email = $2",[user,email])
+
+        if(existingUser.rows.length > 0){
+            res.status(400).send("El email y/o username ya están en uso.")
+        }
+
+        const results = await bd.query("INSERT INTO usuarios (username,nombre,apellido,email,passoword) VALUES ($1,$2,$3,$4,$5)",[user,nombre,apellido,email,password])
+
+        res.send('Usuario registrado correctamente')
+    }
+    catch(error){
+
+    }
+})
+
 app.get('/libros',async (req,res) => {
     try{
         const results = await bd.query("SELECT * FROM libros")
