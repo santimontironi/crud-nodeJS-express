@@ -37,14 +37,15 @@ app.post('/login', async (req,res) => {
             res.redirect('/libros')
         }
         else{
-            res.render('/login',{
+            res.render('login',{
+                title: 'Login',
                 wrongLogin:'Usuario o contraseña incorrectas.',
                 errorLogin: null
             })
         }
     }
     catch(error){
-        res.render('/login',{
+        res.render('login',{
             title: 'Login',
             wrongLogin: null,
             errorLogin: `Error en el servidor: ${error}`
