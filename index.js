@@ -58,12 +58,12 @@ app.post('/register',async (req,res) => {
             res.status(400).send("El email y/o username ya están en uso.")
         }
 
-        const results = await bd.query("INSERT INTO usuarios (username,nombre,apellido,email,passoword) VALUES ($1,$2,$3,$4,$5)",[user,nombre,apellido,email,password])
+        const results = await bd.query("INSERT INTO usuarios (username,nombre,apellido,email,password) VALUES ($1,$2,$3,$4,$5)",[user,nombre,apellido,email,password])
 
         res.send('Usuario registrado correctamente')
     }
     catch(error){
-
+        res.status(500).send(`Error interno de servidor: ${error}`)
     }
 })
 
