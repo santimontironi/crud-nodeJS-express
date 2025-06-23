@@ -12,5 +12,14 @@
         <input type="password" name="password" id="password" placeholder="Contraseña">
         <input type="submit" value="Crear cuenta">
     </form>
+
+    <% if (wrongUser) { %>
+        <p> <% wrongUser %> </p>
+    <% } %>
+
+    <% if (errorRegister) { %>
+        <p> <% errorRegister %> </p>
+    <% } %>
+
 </body>
 </html>

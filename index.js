@@ -39,7 +39,7 @@ app.post('/login', async (req,res) => {
         }
     }
     catch(error){
-        res.status(500).send("Error en el servidor.")
+        res.status(500).send(`Error en el servidor: ${error}`)
     }
 })
 
@@ -55,15 +55,19 @@ app.post('/register',async (req,res) => {
         const existingUser = await bd.query("SELECT * FROM usuarios WHERE username = $1 AND email = $2",[user,email])
 
         if(existingUser.rows.length > 0){
-            res.status(400).send("El email y/o username ya están en uso.")
+            res.render('register',{
+                wrongUser: 'Email o username ya usados. Vuelva a intentarlo.'
+            })
         }
 
-        const results = await bd.query("INSERT INTO usuarios (username,nombre,apellido,email,password) VALUES ($1,$2,$3,$4,$5)",[user,nombre,apellido,email,password])
+        await bd.query("INSERT INTO usuarios (username,nombre,apellido,email,password) VALUES ($1,$2,$3,$4,$5)",[user,nombre,apellido,email,password])
 
         res.send('Usuario registrado correctamente')
     }
     catch(error){
-        res.status(500).send(`Error interno de servidor: ${error}`)
+        res.render('register',{
+            errorRegister: error
+        })
     }
 })
 
@@ -73,8 +77,7 @@ app.get('/libros',async (req,res) => {
         res.render('libros',{libros:results.rows})
     }
     catch(error){
-        console.error('Error al obtener libros:', error)
-        res.status(500).send('Error al obtener libros')
+        res.status(500).send(`Error al obtener libros : ${error}`)
     }
 })
 
