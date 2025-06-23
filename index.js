@@ -45,18 +45,22 @@ app.post('/login', async (req,res) => {
 
 app.get('/register',(req,res) => {
     res.render('register',{
-        title:'Registro'
+        title:'Registro',
+        wrongUser: null,
+        errorRegister: null
     })
 })
 
 app.post('/register',async (req,res) => {
     const {nombre,apellido,user,email,password} = req.body
     try{
-        const existingUser = await bd.query("SELECT * FROM usuarios WHERE username = $1 AND email = $2",[user,email])
+        const existingUser = await bd.query("SELECT * FROM usuarios WHERE username = $1 OR email = $2",[user,email])
 
         if(existingUser.rows.length > 0){
             res.render('register',{
-                wrongUser: 'Email o username ya usados. Vuelva a intentarlo.'
+                title: 'Registro',
+                wrongUser: 'Email o username ya usados. Vuelva a intentarlo.',
+                errorRegister: null
             })
         }
 
@@ -66,7 +70,9 @@ app.post('/register',async (req,res) => {
     }
     catch(error){
         res.render('register',{
-            errorRegister: error
+            title: 'Registro',
+            errorRegister: error,
+            wrongUser: null
         })
     }
 })
