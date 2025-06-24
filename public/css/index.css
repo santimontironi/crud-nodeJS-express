@@ -3,6 +3,8 @@
 
 body{
     font-family: "Fira Sans", sans-serif;
+    margin: 0;
+    padding: 0;
 }
 
 .contenedorIndex{
@@ -70,6 +72,8 @@ body{
 }
 
 .contenedorLogin{
+    min-height: 100vh;
+    max-width: 100%;
     background: linear-gradient(90deg,#FA8126,#2a1069,#130830);
     font-family: "Roboto Slab", serif;
 }
@@ -116,31 +120,29 @@ body{
     background-color: #d46a18;
 }
 
-@media screen and (max-width:800px){
-    .contenedorIndex{
-        height: 300vh;
-    }
+@media (max-width:800px){
     .contenedorIndex img{
-        width: 650px;
+        width: 250px;
     }
     .contenidoIndex{
-        top: 10%;
-        width: 100%;
+        width: 300px;
+        text-align: center;
     }
-    .tituloPrincipal{
-        font-size: 90px;
-    }
-    .contenidoIndex p{
-        font-size: 30px;
-        margin-top: 20px;
-        margin-bottom: 20px;
+    .contenidoIndex h1{
+        font-size: 40px;
     }
     .botones a:first-child{
-        padding: 15px;
-        font-size: 35px;
+        background-color: #1a0b41;
+        color: #FA8126;
+        padding: 10px;
+        text-decoration: none;
+        border-radius: 20px;
     }
     .botones a:last-child{
-        padding: 15px;
-        font-size: 35px;
+        background-color: #FA8126;
+        color: #1a0b41;
+        padding: 10px;
+        text-decoration: none;
+        border-radius: 20px;
     }
 }
