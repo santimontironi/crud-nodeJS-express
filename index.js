@@ -57,6 +57,7 @@ app.get('/register',(req,res) => {
     res.render('register',{
         title:'Registro',
         wrongUser: null,
+        registroCorrecto: null,
         errorRegister: null
     })
 })
@@ -70,18 +71,25 @@ app.post('/register',async (req,res) => {
             res.render('register',{
                 title: 'Registro',
                 wrongUser: 'Email o username ya usados. Vuelva a intentarlo.',
+                registroCorrecto: null,
                 errorRegister: null
             })
         }
 
         await bd.query("INSERT INTO usuarios (username,nombre,apellido,email,password) VALUES ($1,$2,$3,$4,$5)",[user,nombre,apellido,email,password])
 
-        res.send('Usuario registrado correctamente')
+        res.render('register',{
+            title:'Registro',
+            wrongUser: null,
+            errorRegister: null,
+            registroCorrecto: 'Usuario registrado correctamente. Ahora inicie sesión.'
+        })
     }
     catch(error){
         res.render('register',{
             title: 'Registro',
             errorRegister: error,
+            registroCorrecto: null,
             wrongUser: null
         })
     }

@@ -6,6 +6,8 @@ body{
 }
 
 .contenedorIndex{
+    min-height: 100vh;
+    min-width: 100%;
     background-image: url('/img/fondoIndex.jpg');
     background-repeat: no-repeat; 
     background-size: cover;
@@ -112,4 +114,33 @@ body{
 
 .contenedorLogin form input[type="submit"]:hover{
     background-color: #d46a18;
+}
+
+@media screen and (max-width:800px){
+    .contenedorIndex{
+        height: 300vh;
+    }
+    .contenedorIndex img{
+        width: 650px;
+    }
+    .contenidoIndex{
+        top: 10%;
+        width: 100%;
+    }
+    .tituloPrincipal{
+        font-size: 90px;
+    }
+    .contenidoIndex p{
+        font-size: 30px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .botones a:first-child{
+        padding: 15px;
+        font-size: 35px;
+    }
+    .botones a:last-child{
+        padding: 15px;
+        font-size: 35px;
+    }
 }
