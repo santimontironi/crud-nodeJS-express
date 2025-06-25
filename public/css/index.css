@@ -185,7 +185,7 @@ body{
 .contenedorInicio #menu{
     background: linear-gradient(200deg,#130830,#2a1069);
     padding: 15px;
-    border-bottom: solid 4px #d46a18;
+    box-shadow: 8px 7px 10px #000;
 }
 
 .contenedorInicio #menu .logo{

@@ -26,22 +26,22 @@
             </div>
         </nav>
 
-          <div>
-            <h1>Listado de libros</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Título</th>
-                        <th>Autor</th>
-                        <th>Año</th>
-                        <th>Género</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% if (libros.length === 0) { %>
-                        <h1>No hay libros registrados.</h1>
-                    <% } else { %>
+        <div>
+            <% if (libros.length === 0) { %>
+                <h1>No hay libros registrados.</h1>
+            <% } else { %>
+                <h1>Listado de libros</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Título</th>
+                            <th>Autor</th>
+                            <th>Año</th>
+                            <th>Género</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                         <% libros.forEach(libro => { %>
                             <tr>
                                 <td><%= libro.id %></td>
@@ -51,10 +51,9 @@
                                 <td><%= libro.genero %></td>
                             </tr>
                         <% }) %>
-                    <%}%>
-                </tbody>
-            </table>
-            <a href="/logout">Cerrar sesión</a>
+                    </tbody>
+                </table>
+            <%}%>
         </div>
     </section>
 
