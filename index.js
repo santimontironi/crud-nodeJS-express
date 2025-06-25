@@ -52,7 +52,7 @@ app.post('/login', async (req,res) => {
         const results = await bd.query("SELECT * FROM usuarios WHERE username = $1 AND password = $2",[user,password])
         if(results.rows.length > 0){
             req.session.usuario = results.rows[0]
-            res.redirect('/libros')
+            res.redirect('/inicio')
         }
         else{
             res.render('login',{
@@ -113,10 +113,13 @@ app.post('/register',async (req,res) => {
     }
 })
 
-app.get('/libros',protegerRuta,async (req,res) => {
+app.get('/inicio',protegerRuta,async (req,res) => {
     try{
         const results = await bd.query("SELECT * FROM libros")
-        res.render('libros',{libros:results.rows})
+        res.render('inicio',{
+            title:'Inicio',
+            libros:results.rows
+        })
     }
     catch(error){
         res.status(500).send(`Error al obtener libros : ${error}`)
