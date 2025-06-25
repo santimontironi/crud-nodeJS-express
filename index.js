@@ -2,6 +2,8 @@ const bodyParser = require('body-parser')
 const bd = require('./db')
 const express = require('express')
 const session = require('express-session')
+require('dotenv').config() //se cargan las variables de entorno
+
 const port = 3000
 
 const app = express()
@@ -17,10 +19,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.use(session({
-    secret: 'lecturama_secreta', // poné un valor seguro
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false
 }))
+
+function protegerRuta(req, res, next) {
+    if (req.session.usuario) {
+        next();
+    } else {
+        res.redirect('/login')
+    }
+}
 
 app.get('/',(req,res) => {
     res.render('index',{
@@ -102,14 +112,6 @@ app.post('/register',async (req,res) => {
         })
     }
 })
-
-function protegerRuta(req, res, next) {
-    if (req.session.usuario) {
-        next();
-    } else {
-        res.redirect('/login')
-    }
-}
 
 app.get('/libros',protegerRuta,async (req,res) => {
     try{
