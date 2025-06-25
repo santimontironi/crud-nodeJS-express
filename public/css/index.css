@@ -140,6 +140,41 @@ body{
     font-family: "Caprasimo", serif;
 }
 
+.contenedorRegister h1{
+    text-align: center;
+    font-size: 70px;
+    color: #1a0b41;
+}
+
+.contenedorRegister form{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.contenedorRegister form input[type="submit"]{
+    background-color: #1a0b41;
+    width: auto;
+    margin: auto;
+    border: none;
+    color: #d46a18;
+    padding: 10px;
+}
+
+.contenedorRegister form input[type="submit"]:hover{
+    background-color: #2a1069;
+}
+
+.contenedorRegister header{
+    width: 100%;
+    padding: 1% 0 0 2%;
+}
+
+.contenedorRegister header a{
+    color: #fff;
+}
+
 @media (max-width:800px){
     .contenedorIndex img{
         width: 250px;
@@ -170,5 +205,19 @@ body{
     }
     .contenedorLogin form{
         width: 300px;
+    }
+    .contenedorRegister{
+        height: auto;
+        padding-bottom: 35px;
+    }
+    .contenedorRegister form{
+        justify-content: center;
+        align-items: center;
+    }
+    .contenedorRegister form input{
+        width: 350px;
+    }
+    .contenedorRegister header{
+        padding: 3% 0 0 2%;
     }
 }
