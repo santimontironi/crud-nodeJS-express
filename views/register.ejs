@@ -4,22 +4,23 @@
     <%- include ('partials/head') %>
 </head>
 <body>
-    <form action="/register" method="POST">
-        <input type="text" name="nombre" id="nombre" placeholder="Nombre">
-        <input type="text" name="apellido" id="apellido" placeholder="Apellido">
-        <input type="text" name="user" id="user" placeholder="Nombre de usuario">
-        <input type="email" name="email" id="email" placeholder="Correo electrónico">
-        <input type="password" name="password" id="password" placeholder="Contraseña">
-        <input type="submit" value="Crear cuenta">
-    </form>
-
-    <% if (wrongUser) { %>
-        <p><%= wrongUser %></p>
-    <% } %>
-
-    <% if (errorRegister) { %>
-        <p><%= errorRegister %></p>
-    <% } %>
-
+    <section class="contenedorRegister">
+        <form action="/register" method="POST">
+            <input type="text" name="nombre" id="nombre" placeholder="Nombre">
+            <input type="text" name="apellido" id="apellido" placeholder="Apellido">
+            <input type="text" name="user" id="user" placeholder="Nombre de usuario">
+            <input type="email" name="email" id="email" placeholder="Correo electrónico">
+            <input type="password" name="password" id="password" placeholder="Contraseña">
+            <input type="submit" value="Crear cuenta">
+        </form>
+    
+        <% if (wrongUser) { %>
+            <p><%= wrongUser %></p>
+        <% } %>
+    
+        <% if (errorRegister) { %>
+            <p><%= errorRegister %></p>
+        <% } %>
+    </section>
 </body>
 </html>

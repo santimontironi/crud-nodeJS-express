@@ -103,7 +103,7 @@ body{
     width: 400px;
     height: auto;
     padding: 15px;
-    margin-top: 130px;
+    margin-top: 90px;
     border: solid 1px #fff;
     box-shadow: 5px 5px 10px #000;
 }
@@ -120,6 +120,26 @@ body{
     background-color: #d46a18;
 }
 
+.wrongLogin,.errorLogin,.wrongRegister,.errorRegister{
+    background-color: #d46a18;
+    color: #fff;
+    text-align: center;
+    margin: auto;
+    margin-top: 30px;
+    width: 300px;
+    padding: 10px;
+}
+
+.contenedorRegister{
+    min-height: 100vh;
+    min-width: 100%;
+    background-image: url('/img/fondoRegister.jpg');
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-position: center;
+    font-family: "Caprasimo", serif;
+}
+
 @media (max-width:800px){
     .contenedorIndex img{
         width: 250px;
@@ -132,17 +152,23 @@ body{
         font-size: 40px;
     }
     .botones a:first-child{
-        background-color: #1a0b41;
-        color: #FA8126;
+        padding: 10px;
+    }
+    .botones a:last-child{
         padding: 10px;
         text-decoration: none;
         border-radius: 20px;
     }
-    .botones a:last-child{
-        background-color: #FA8126;
-        color: #1a0b41;
-        padding: 10px;
-        text-decoration: none;
-        border-radius: 20px;
+    .contenedorLogin{
+        max-width: 100%;
+    }
+    .contenedorLogin h1{
+        font-size: 50px;
+    }
+    .contenedorLogin header{
+        padding: 7% 0 0 7%;
+    }
+    .contenedorLogin form{
+        width: 300px;
     }
 }
