@@ -180,6 +180,10 @@ body{
     width: 100%;
     min-height: 100vh;
     font-family: "Ubuntu", sans-serif;
+    background-image: url('/img/fondoInicio.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .contenedorInicio #menu{
@@ -201,6 +205,35 @@ body{
 .contenedorInicio #menu .nav-link{
     font-size: 19px;
     color: #fff;
+}
+
+.contenedorInicio .noHayLibros{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contenedorInicio .noHayLibros img{
+    width: 380px;
+    filter: drop-shadow(
+        10px 5px 10px rgba(0,0,0,0.70)
+    );
+}
+
+.contenedorInicio .noHayLibros h1{
+    font-size: 45px;
+    color: #2a1069;
+}
+
+.contenedorInicio .noHayLibros a{
+    text-decoration: none;
+    background-color: #1a0b41;
+    color: #fff;
+}
+
+.contenedorInicio .noHayLibros a:hover{
+    background-color: #2a1069;
 }
 
 @media (max-width:800px){
@@ -247,5 +280,16 @@ body{
     }
     .contenedorRegister header{
         padding: 3% 0 0 2%;
+    }
+    .contenedorInicio{
+        padding-bottom: 25px;
+        max-width: 100%;
+    }
+    .contenedorInicio .noHayLibros img{
+        width: 300px;
+    }
+    .contenedorInicio .noHayLibros h1{
+        text-align: center;
+        font-size: 35px;
     }
 }

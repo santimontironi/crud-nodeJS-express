@@ -126,6 +126,12 @@ app.get('/inicio',protegerRuta,async (req,res) => {
     }
 })
 
+app.post('/agregar-libro',protegerRuta,(req,res) => {
+    res.render('agregarLibro',{
+        title:'Agregar libro'
+    })
+})
+
 app.get('/logout',(req,res) => {
     req.session.destroy(err => {
         if(err){

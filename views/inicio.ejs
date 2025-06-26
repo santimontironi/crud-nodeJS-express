@@ -13,10 +13,7 @@
               <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                   <li class="nav-item">
-                    <a class="nav-link active hvr-sweep-to-bottom" aria-current="page" href="#">Mis libros</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link hvr-sweep-to-bottom" href="/add-book">Agregar libro</a>
+                    <a class="nav-link hvr-sweep-to-bottom" href="/agregar-libro">Agregar libro</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link hvr-sweep-to-bottom" href="/logout">Cerrar sesión</a>
@@ -28,7 +25,11 @@
 
         <div>
             <% if (libros.length === 0) { %>
-                <h1>No hay libros registrados.</h1>
+                <div class="noHayLibros">
+                    <img src="img/404.png" alt="error 404 no hay libros">
+                    <h1>No hay libros agregados.</h1>
+                    <a class="btn" href="/agregar-libro">Agregar</a>
+                </div>
             <% } else { %>
                 <h1>Listado de libros</h1>
                 <table>
