@@ -31,29 +31,20 @@
                     <a class="btn" href="/agregar-libro">Agregar</a>
                 </div>
             <% } else { %>
-                <h1>Listado de libros</h1>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>Título</th>
-                            <th>Autor</th>
-                            <th>Año</th>
-                            <th>Género</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <% libros.forEach(libro => { %>
-                            <tr>
-                                <td><%= libro.id %></td>
-                                <td><%= libro.titulo %></td>
-                                <td><%= libro.autor %></td>
-                                <td><%= libro.anio %></td>
-                                <td><%= libro.genero %></td>
-                            </tr>
-                        <% }) %>
-                    </tbody>
-                </table>
+                    <% libros.forEach(libro => { %>
+
+                        <% if (libro.imagen) { %>
+                            <img src="<%= libro.imagen %>" alt="Portada del libro" />
+                        <% } else { %>
+                            <img src="/img/default.jpg" alt="default book">
+                        <%}%>
+
+                        <h1><%= libro.titulo %></h1>
+                        <p><%= libro.descripcion %></p>
+                        <p><%= libro.autor %></p>
+                        <span><%= libro.anio %></span>
+                        <span><%= libro.genero %></span>
+                    <% }) %>
             <%}%>
         </div>
     </section>

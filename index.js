@@ -2,6 +2,7 @@ const bodyParser = require('body-parser')
 const bd = require('./db')
 const express = require('express')
 const session = require('express-session')
+const multer = require('multer')
 require('dotenv').config() //se cargan las variables de entorno
 
 const port = 3000
@@ -23,6 +24,9 @@ app.use(session({
     resave: false,
     saveUninitialized: false
 }))
+
+// Configuración del almacenamiento en memoria
+const upload = multer({ dest: 'public/uploads/' }) 
 
 function protegerRuta(req, res, next) {
     if (req.session.usuario) {
@@ -135,12 +139,13 @@ app.get('/agregar-libro',protegerRuta,(req,res) => {
     })
 })
 
-app.post('/agregar-libro',protegerRuta, async (req,res) => {
+app.post('/agregar-libro',protegerRuta, upload.single('imagen'), async (req,res) => {
     const{titulo,descripcion,genero,autor,año} = req.body
     const usuarioLogueado = req.session.usuario.id
+    const imagenPath = req.file ? `/uploads/${req.file.filename}` : null // ruta pública
     try{
-        await bd.query("INSERT INTO libros (titulo,descripcion,genero,autor,anio,usuario_id) VALUES ($1,$2,$3,$4,$5,$6)",
-            [titulo,descripcion,genero,autor,año,usuarioLogueado]
+        await bd.query("INSERT INTO libros (imagen,titulo,descripcion,genero,autor,anio,usuario_id) VALUES ($1,$2,$3,$4,$5,$6,$7)",
+            [imagenPath,titulo,descripcion,genero,autor,año,usuarioLogueado]
         )
         res.render('agregarLibro',{
             title:'Agregar libro',
