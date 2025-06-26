@@ -174,6 +174,25 @@ app.post('/eliminar-libro',async (req,res) => {
     }   
 })
 
+app.get('/libro/:id',async(req,res) => {
+    const {id} = req.params
+    try {
+        const libro = await bd.query("SELECT * FROM libros WHERE id = $1",[id])
+        const libroObtenido = libro.rows
+        res.render('libro',{
+            title: 'Libro',
+            libro: libroObtenido[0],
+            errorAgregarLibro: null
+        })
+    } catch (error) {
+        res.render('libro',{
+            title: 'Libro',
+            libro: null,
+            errorObtenerLibro: 'No se ha podido obtener la información del libro.'
+        })
+    }
+})
+
 app.get('/logout',(req,res) => {
     req.session.destroy(err => {
         if(err){
