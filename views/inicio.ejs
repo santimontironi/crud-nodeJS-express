@@ -46,6 +46,11 @@
                                 <span>Año: <%= libro.anio %></span>
                                 <span>Género: <%= libro.genero %></span>
                             </div>
+
+                            <form action="/eliminar-libro" method="post">
+                                <input type="hidden" name="idLibro" value="<%= libro.id %>" >
+                                <input type="submit" value="Eliminar">
+                            </form>
                         </div>
                     <% }) %>
                 </div>

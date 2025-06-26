@@ -162,6 +162,18 @@ app.post('/agregar-libro',protegerRuta, upload.single('imagen'), async (req,res)
     }
 })
 
+app.post('/eliminar-libro',async (req,res) => {
+    const {idLibro} = req.body
+    try{
+        await bd.query("DELETE FROM libros WHERE id = $1",[idLibro])
+        res.redirect('/inicio')
+    }
+    catch(error){
+        res.send("HUBO UN ERROR: ",error)
+        console.log(`error al eliminar: ${error}`)
+    }   
+})
+
 app.get('/logout',(req,res) => {
     req.session.destroy(err => {
         if(err){
