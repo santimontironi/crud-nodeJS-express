@@ -23,30 +23,33 @@
             </div>
         </nav>
 
-        <div>
-            <% if (libros.length === 0) { %>
-                <div class="noHayLibros">
-                    <img src="img/404.png" alt="error 404 no hay libros">
-                    <h1>No hay libros agregados.</h1>
-                    <a class="btn" href="/agregar-libro">Agregar</a>
+        <% if (libros.length === 0) { %>
+            <div class="noHayLibros">
+                <img src="img/404.png" alt="error 404 no hay libros">
+                <h1>No hay libros agregados.</h1>
+                <a class="btn" href="/agregar-libro">Agregar</a>
                 </div>
-            <% } else { %>
+        <% } else { %>
+                <div class="libros">
                     <% libros.forEach(libro => { %>
-
-                        <% if (libro.imagen) { %>
-                            <img src="<%= libro.imagen %>" alt="Portada del libro" />
-                        <% } else { %>
-                            <img src="/img/default.jpg" alt="default book">
-                        <%}%>
-
-                        <h1><%= libro.titulo %></h1>
-                        <p><%= libro.descripcion %></p>
-                        <p><%= libro.autor %></p>
-                        <span><%= libro.anio %></span>
-                        <span><%= libro.genero %></span>
+                        <div class="libro">
+                            <% if (libro.imagen) { %>
+                                <img src="<%= libro.imagen %>" alt="Portada del libro" />
+                            <% } else { %>
+                                <img src="/img/default.jpg" alt="default book">
+                            <%}%>
+        
+                            <div class="libroInfo">
+                                <h1><%= libro.titulo %></h1>
+                                <p><%= libro.descripcion %></p>
+                                <p><%= libro.autor %></p>
+                                <span><%= libro.anio %></span>
+                                <span><%= libro.genero %></span>
+                            </div>
+                        </div>
                     <% }) %>
-            <%}%>
-        </div>
+                </div>
+        <%}%>
     </section>
 
 </body>
