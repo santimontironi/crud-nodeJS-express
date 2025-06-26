@@ -114,8 +114,9 @@ app.post('/register',async (req,res) => {
 })
 
 app.get('/inicio',protegerRuta,async (req,res) => {
+    const usuarioLogueado = req.session.usuario.id
     try{
-        const results = await bd.query("SELECT * FROM libros")
+        const results = await bd.query("SELECT * FROM libros WHERE usuario_id = $1",[usuarioLogueado])
         res.render('inicio',{
             title:'Inicio',
             libros:results.rows
@@ -126,10 +127,34 @@ app.get('/inicio',protegerRuta,async (req,res) => {
     }
 })
 
-app.post('/agregar-libro',protegerRuta,(req,res) => {
+app.get('/agregar-libro',protegerRuta,(req,res) => {
     res.render('agregarLibro',{
-        title:'Agregar libro'
+        title:'Agregar libro',
+        libroAgregado: null,
+        errorAgregarLibro: null
     })
+})
+
+app.post('/agregar-libro',protegerRuta, async (req,res) => {
+    const{titulo,descripcion,genero,autor,año} = req.body
+    const usuarioLogueado = req.session.usuario.id
+    try{
+        await bd.query("INSERT INTO libros (titulo,descripcion,genero,autor,anio,usuario_id) VALUES ($1,$2,$3,$4,$5,$6)",
+            [titulo,descripcion,genero,autor,año,usuarioLogueado]
+        )
+        res.render('agregarLibro',{
+            title:'Agregar libro',
+            libroAgregado: 'Libro agregado correctamente.',
+            errorAgregarLibro: null
+        })
+    }
+    catch(error){
+        res.render('agregarLibro',{
+            title:'Agregar libro',
+            libroAgregado: null,
+            errorAgregarLibro: `Hubo un error al agregar el libro: ${error}`
+        })
+    }
 })
 
 app.get('/logout',(req,res) => {

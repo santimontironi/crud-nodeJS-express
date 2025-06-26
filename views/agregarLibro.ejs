@@ -3,7 +3,38 @@
     <%- include ('partials/head') %>
 <body>
     <div class="contenedorAgregarLibro">
-        <form action="/agregar-libro"></form>
+        <form action="/agregar-libro" method="post">
+            <div class="mb-3">
+                <label for="titulo">Titulo</label>
+                <input type="text" name="titulo" id="titulo" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="titulo">Descripción</label>
+                <input type="text" name="descripcion" id="descripcion" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="titulo">Género</label>
+                <input type="text" name="genero" id="genero" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="autor">Autor</label>
+                <input type="text" name="autor" id="autor" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="año">Año</label>
+                <input type="text" name="año" id="año" class="form-control">
+            </div>
+            <input type="submit" value="Agregar libro">
+        </form>
+
+        <% if (libroAgregado) { %>
+            <p><%= libroAgregado %></p>
+        <% } %>
+
+        <% if (errorAgregarLibro) { %>
+            <p><%= errorAgregarLibro %></p>
+        <% } %>
+
     </div>
 </body>
 </html>
