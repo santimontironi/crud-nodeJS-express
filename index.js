@@ -140,18 +140,14 @@ app.get('/agregar-libro',protegerRuta,(req,res) => {
 })
 
 app.post('/agregar-libro',protegerRuta, upload.single('imagen'), async (req,res) => {
-    const{titulo,descripcion,genero,autor,año} = req.body
+    const{titulo,descripcion,genero,autor,anio} = req.body
     const usuarioLogueado = req.session.usuario.id
     const imagenPath = req.file ? `/uploads/${req.file.filename}` : null // ruta pública
     try{
         await bd.query("INSERT INTO libros (imagen,titulo,descripcion,genero,autor,anio,usuario_id) VALUES ($1,$2,$3,$4,$5,$6,$7)",
-            [imagenPath,titulo,descripcion,genero,autor,año,usuarioLogueado]
+            [imagenPath,titulo,descripcion,genero,autor,anio,usuarioLogueado]
         )
-        res.render('agregarLibro',{
-            title:'Agregar libro',
-            libroAgregado: 'Libro agregado correctamente.',
-            errorAgregarLibro: null
-        })
+        res.redirect('/inicio')
     }
     catch(error){
         res.render('agregarLibro',{

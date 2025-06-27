@@ -32,7 +32,7 @@
         <% } else { %>
                 <div class="libros">
                     <% libros.forEach(libro => { %>
-                        <div href="" class="libro">
+                        <div class="libro">
                             <% if (libro.imagen) { %>
                                 <img src="<%= libro.imagen %>" alt="Portada del libro" />
                             <% } else { %>
@@ -41,17 +41,17 @@
         
                             <div class="libroInfo">
                                 <h1><a href="/libro/<%= libro.id %>">Titulo: <%= libro.titulo %></a></h1>
-                                <p>Descripción: <%= libro.descripcion %></p>
-                                <p>Autor: <%= libro.autor %></p>
-                                <span>Año: <%= libro.anio %></span>
-                                <span>Género: <%= libro.genero %></span>
+                                <p><strong>Descripción:</strong> <%= libro.descripcion %></p>
+                                <p><strong>Autor:</strong> <%= libro.autor %></p>
+                                <p><strong>Año:</strong> <%= libro.anio %></p>
+                                <p><strong>Género:</strong>  <%= libro.genero %></p>
                             </div>
 
-                            <form action="/eliminar-libro" method="post">
+                            <form class="form-eliminar" action="/eliminar-libro" method="post">
                                 <input type="hidden" name="idLibro" value="<%= libro.id %>" >
                                 <input type="submit" value="Eliminar">
                             </form>
-                        <div>
+                        </div>
                     <% }) %>
                 </div>
         <%}%>

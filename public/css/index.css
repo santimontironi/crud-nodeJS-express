@@ -254,6 +254,7 @@ body{
     height: 100%;
     font-family: "Caprasimo", serif;
     box-shadow: 8px 10px 12px #000;
+    padding-bottom: 10px;
 }
 
 .libros .libro:hover{
@@ -270,8 +271,30 @@ body{
 }
 
 .libros .libro h1{
-    font-size: 30px;
+    font-size: 27px;
     border-bottom: solid 3px #2a1069;
+}
+
+.libros .libro a{
+    text-decoration: none;
+}
+
+.libros .libro form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.libros .libro form input{
+    background-color: #1a0b41;
+    border: none;
+    color: #fff;
+    margin: auto;
+    padding: 10px;
+}
+
+.libros .libro form input:hover{
+    background-color: #2a1069;
 }
 
 @media (max-width:800px){
