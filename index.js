@@ -189,6 +189,18 @@ app.get('/libro/:id',async(req,res) => {
     }
 })
 
+app.post('/libro/:id',async(req,res) => {
+    const {id} = req.params
+    const {titulo,descripcion,autor,genero} = req.body
+    try{
+        await bd.query("UPDATE libros SET titulo = $1, descripcion = $2, autor = $3, genero = $4 WHERE id = $5",[titulo,descripcion,autor,genero,id])
+        res.redirect('/inicio')
+    }
+    catch(error){
+
+    }
+})
+
 app.get('/logout',(req,res) => {
     req.session.destroy(err => {
         if(err){

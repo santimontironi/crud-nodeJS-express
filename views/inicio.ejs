@@ -32,26 +32,28 @@
         <% } else { %>
                 <div class="libros">
                     <% libros.forEach(libro => { %>
-                        <div class="libro">
-                            <% if (libro.imagen) { %>
-                                <img src="<%= libro.imagen %>" alt="Portada del libro" />
-                            <% } else { %>
-                                <img src="/img/default.jpg" alt="default book">
-                            <%}%>
-        
-                            <div class="libroInfo">
-                                <h1><a href="/libro/<%= libro.id %>">Titulo: <%= libro.titulo %></a></h1>
-                                <p><strong>Descripción:</strong> <%= libro.descripcion %></p>
-                                <p><strong>Autor:</strong> <%= libro.autor %></p>
-                                <p><strong>Año:</strong> <%= libro.anio %></p>
-                                <p><strong>Género:</strong>  <%= libro.genero %></p>
-                            </div>
+                        <a href="/libro/<%= libro.id %>">
+                          <div class="libro">
+                              <% if (libro.imagen) { %>
+                                  <img src="<%= libro.imagen %>" alt="Portada del libro" />
+                              <% } else { %>
+                                  <img src="/img/default.jpg" alt="default book">
+                              <%}%>
+          
+                              <div class="libroInfo">
+                                  <h1><strong>Titulo: </strong><%= libro.titulo %></h1>
+                                  <p><strong>Descripción:</strong> <%= libro.descripcion %></p>
+                                  <p><strong>Autor:</strong> <%= libro.autor %></p>
+                                  <p><strong>Año:</strong> <%= libro.anio %></p>
+                                  <p><strong>Género:</strong>  <%= libro.genero %></p>
+                              </div>
 
-                            <form class="form-eliminar" action="/eliminar-libro" method="post">
-                                <input type="hidden" name="idLibro" value="<%= libro.id %>" >
-                                <input type="submit" value="Eliminar">
-                            </form>
-                        </div>
+                              <form class="form-eliminar" action="/eliminar-libro" method="post">
+                                  <input type="hidden" name="idLibro" value="<%= libro.id %>" >
+                                  <input type="submit" value="Eliminar">
+                              </form>
+                          </div>
+                        </a>
                     <% }) %>
                 </div>
         <%}%>

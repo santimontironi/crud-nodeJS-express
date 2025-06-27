@@ -3,7 +3,26 @@
     <%- include ('partials/head') %>
 <body>
     <section class="contenedorLibro">
-       <h1><%= libro.titulo %></h1> 
+        <h1>Datos del libro: <%= libro.titulo %></h1>
+        <form action="/libro/<%= libro.id %>" method="post">
+            <div class="mb-3">
+                <label class="form-label" for="titulo">Titulo:</label>
+                <input class="form-control" type="text" name="titulo" id="titulo" value="<%= libro.titulo %>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="titulo">Descripción:</label>
+                <input class="form-control" type="text" name="descripcion" id="descripcion" value="<%= libro.descripcion %>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="titulo">Autor:</label>
+                <input class="form-control" type="text" name="autor" id="autor" value="<%= libro.autor %>">
+            </div>
+            <div class="mb-3">
+                <label class="form-label" for="titulo">Género:</label>
+                <input class="form-control" type="text" name="genero" id="genero" value="<%= libro.genero %>">
+            </div>
+            <input type="submit" value="Editar libro">
+        </form>
     </section>
 </body>
 </html>
