@@ -404,4 +404,13 @@ body{
         justify-content: center;
         align-items: center;
     }
+    .contenedorAgregarLibro form{
+        width: 300px;
+    }
+    .contenedorAgregarLibro form input[type="file"]{
+        width: 250px;
+    }
+    .contenedorAgregarLibro form input[type="text"]{
+        width: 250px;
+    }
 }
