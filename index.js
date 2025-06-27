@@ -197,7 +197,7 @@ app.post('/libro/:id',async(req,res) => {
         res.redirect('/inicio')
     }
     catch(error){
-
+        res.send("No se ha podido editar el libro: ", error)
     }
 })
 

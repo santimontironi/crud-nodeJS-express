@@ -2,10 +2,10 @@
 <html lang="es">
     <%- include ('partials/head') %>
 <body>
-    <div class="contenedorAgregarLibro">
+    <section class="contenedorAgregarLibro">
         <form action="/agregar-libro" method="post" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label for="imagen"></label>
+            <div class="mb-3 d-flex flex-column gap-2">
+                <label for="imagen">Imagen</label>
                 <input type="file" name="imagen" id="imagen" accept="image/*">
             </div>
             <div class="mb-3">
