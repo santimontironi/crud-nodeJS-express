@@ -91,3 +91,5 @@ router.post('/libro/:id',async(req,res) => {
         res.send("No se ha podido editar el libro: ", error)
     }
 })
+
+module.exports = router;
