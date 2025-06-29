@@ -1,1 +1,1 @@
-### Crud de libros en NodeJS y Express en desarrollo.
+### Crud de libros en NodeJS, Express y PostgreSQL y Express en desarrollo.
