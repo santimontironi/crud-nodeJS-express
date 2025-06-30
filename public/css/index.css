@@ -121,19 +121,30 @@ body{
     background-color: #d46a18;
 }
 
-.wrongLogin,.errorLogin,.wrongRegister,.errorRegister{
-    background-color: #d46a18;
+.wrongLogin,.errorLogin,.wrongRegister,.errorRegister,.wrongUser{
+    background-color: #eb150e;
     color: #fff;
     text-align: center;
     margin: auto;
-    margin-top: 30px;
-    width: 300px;
-    padding: 10px;
+    margin-top: 20px;
+    width: 500px;
+    padding: 8px;
+}
+
+.registroCorrecto{
+    background-color: #18d450;
+    color: #000;
+    text-align: center;
+    margin: auto;
+    margin-top: 10px;
+    width: 500px;
+    padding: 8px;
 }
 
 .contenedorRegister{
     min-height: 100vh;
     min-width: 100%;
+    padding-bottom: 20px;
     background-image: url('/img/fondoRegister.jpg');
     background-repeat: no-repeat; 
     background-size: cover;

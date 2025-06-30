@@ -21,7 +21,7 @@ router.post('/login', async (req, res) => {
         const results = await bd.query("SELECT * FROM usuarios WHERE username = $1 AND password = $2", [user, password]);
 
         if (results.rows.length === 0) {
-            res.render('login', {
+            return res.render('login', {
                 title: 'Login',
                 wrongLogin: 'Usuario o contraseña incorrectas.',
                 errorLogin: null
@@ -34,17 +34,17 @@ router.post('/login', async (req, res) => {
 
         if(matchPassword){
             req.session.usuario = usuario
-            res.redirect('/inicio')
+            return res.redirect('/inicio')
         } else{
-            res.render('login', {
+            return res.render('login', {
                 title: 'Login',
-                wrongLogin: 'Usuario o contraseña incorrectas.',
+                wrongLogin: 'Contraseña incorrecta.',
                 errorLogin: null
             });
         }
 
     } catch (error) {
-        res.render('login', {
+        return res.render('login', {
             title: 'Login',
             wrongLogin: null,
             errorLogin: `Error en el servidor: ${error}`
@@ -81,7 +81,7 @@ router.post('/register', async (req, res) => {
 
         await bd.query("INSERT INTO usuarios (username, nombre, apellido, email, password) VALUES ($1, $2, $3, $4, $5)", [user, nombre, apellido, email, hashedPassword])
 
-        res.render('register', {
+        return res.render('register', {
             title: 'Registro',
             wrongUser: null,
             errorRegister: null,
@@ -89,7 +89,7 @@ router.post('/register', async (req, res) => {
         });
         
     } catch (error) {
-        res.render('register', {
+        return res.render('register', {
             title: 'Registro',
             errorRegister: error,
             registroCorrecto: null,

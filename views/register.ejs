@@ -38,12 +38,17 @@
         </form>
     
         <% if (wrongUser) { %>
-            <p><%= wrongUser %></p>
+            <p class="wrongUser"><%= wrongUser %></p>
         <% } %>
     
         <% if (errorRegister) { %>
-            <p><%= errorRegister %></p>
+            <p class="errorRegister"><%= errorRegister %></p>
         <% } %>
+
+        <% if (registroCorrecto) { %>
+            <p class="registroCorrecto"><%= registroCorrecto%></p>
+        <% } %>
+
     </section>
 </body>
 </html>
