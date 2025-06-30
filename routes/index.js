@@ -19,16 +19,30 @@ router.post('/login', async (req, res) => {
     const { user, password } = req.body;
     try {
         const results = await bd.query("SELECT * FROM usuarios WHERE username = $1 AND password = $2", [user, password]);
-        if (results.rows.length > 0) {
-            req.session.usuario = results.rows[0];
-            res.redirect('/inicio');
-        } else {
+
+        if (results.rows.length === 0) {
+            res.render('login', {
+                title: 'Login',
+                wrongLogin: 'Usuario o contraseña incorrectas.',
+                errorLogin: null
+            })
+        }
+
+        const usuario = results.rows[0]
+
+        const matchPassword = await bcrypt.compare(password,usuario.password)
+
+        if(matchPassword){
+            req.session.usuario = usuario
+            res.redirect('/inicio')
+        } else{
             res.render('login', {
                 title: 'Login',
                 wrongLogin: 'Usuario o contraseña incorrectas.',
                 errorLogin: null
             });
         }
+
     } catch (error) {
         res.render('login', {
             title: 'Login',
