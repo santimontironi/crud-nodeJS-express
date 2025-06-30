@@ -1,6 +1,7 @@
-const express = require('express');
-const router = express.Router();
-const bd = require('../db');
+const express = require('express')
+const router = express.Router()
+const bd = require('../db')
+const bcrypt = require('bcrypt')
 
 router.get('/', (req, res) => {
     res.render('index', { title: 'Lecturama' });
@@ -49,7 +50,9 @@ router.get('/register', (req, res) => {
 router.post('/register', async (req, res) => {
     const { nombre, apellido, user, email, password } = req.body;
     try {
-        const existingUser = await bd.query("SELECT * FROM usuarios WHERE username = $1 OR email = $2", [user, email]);
+
+        const existingUser = await bd.query("SELECT * FROM usuarios WHERE username = $1 OR email = $2", [user, email])
+
         if (existingUser.rows.length > 0) {
             return res.render('register', {
                 title: 'Registro',
@@ -59,7 +62,10 @@ router.post('/register', async (req, res) => {
             });
         }
 
-        await bd.query("INSERT INTO usuarios (username, nombre, apellido, email, password) VALUES ($1, $2, $3, $4, $5)", [user, nombre, apellido, email, password]);
+        // se hashea la contraseña antes de almacenarla en la base de datos
+        const hashedPassword = await bcrypt.hash(password, 10)
+
+        await bd.query("INSERT INTO usuarios (username, nombre, apellido, email, password) VALUES ($1, $2, $3, $4, $5)", [user, nombre, apellido, email, hashedPassword])
 
         res.render('register', {
             title: 'Registro',
@@ -67,6 +73,7 @@ router.post('/register', async (req, res) => {
             errorRegister: null,
             registroCorrecto: 'Usuario registrado correctamente. Ahora inicie sesión.'
         });
+        
     } catch (error) {
         res.render('register', {
             title: 'Registro',
