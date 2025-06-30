@@ -41,11 +41,21 @@
                               <%}%>
           
                               <div class="libroInfo">
-                                  <h1><strong>Titulo: </strong><%= libro.titulo %></h1>
-                                  <p><strong>Descripción:</strong> <%= libro.descripcion %></p>
-                                  <p><strong>Autor:</strong> <%= libro.autor %></p>
-                                  <p><strong>Año:</strong> <%= libro.anio %></p>
-                                  <p><strong>Género:</strong>  <%= libro.genero %></p>
+                                  <% if (libro.titulo !== "") { %>
+                                    <h1><strong>Titulo: </strong><%= libro.titulo %></h1>
+                                  <% } %>
+                                  <% if (libro.autor !== "") { %>
+                                    <p><strong>Autor: </strong><%= libro.autor %></p>
+                                  <% } %>
+                                  <% if (libro.descripcion !== "") { %>
+                                    <p><strong>Descripción: </strong><%= libro.descripcion%></p>
+                                  <% } %>
+                                  <% if (libro.anio !== null) { %>
+                                    <p><strong>Año: </strong><%= libro.anio %></p>
+                                  <% } %>
+                                  <% if (libro.genero !== "") { %>
+                                    <p><strong>Género: </strong><%= libro.genero %></p>
+                                  <% } %>
                               </div>
 
                               <form class="form-eliminar" action="/eliminar-libro" method="post">
