@@ -18,7 +18,7 @@ router.get('/login', (req, res) => {
 router.post('/login', async (req, res) => {
     const { user, password } = req.body;
     try {
-        const results = await bd.query("SELECT * FROM usuarios WHERE username = $1 AND password = $2", [user, password]);
+        const results = await bd.query("SELECT * FROM usuarios WHERE username = $1", [user])
 
         if (results.rows.length === 0) {
             return res.render('login', {
