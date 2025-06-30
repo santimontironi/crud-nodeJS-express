@@ -31,7 +31,8 @@ router.get('/agregar-libro',protegerRuta,(req,res) => {
 })
 
 router.post('/agregar-libro',protegerRuta, upload.single('imagen'), async (req,res) => {
-    const{titulo,descripcion,genero,autor,anio} = req.body
+    let{titulo,descripcion,genero,autor,anio} = req.body
+    anio = anio === '' ? null : parseInt(anio);
     const usuarioLogueado = req.session.usuario.id
     const imagenPath = req.file ? `/uploads/${req.file.filename}` : null // ruta pública
     try{
